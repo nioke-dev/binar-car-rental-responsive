@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+
+    <style>
+      .owl-carousel {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 30px 0;
+      }
+      .owl-carousel .item {
+        font-size: 30px;
+        text-align: center;
+        padding: 40px 20px;
+        line-height: 2;
+        font-weight: 700;
+        background-color: #eee;
+      }
+
+      .owl-nav button span {
+        font-size: 30px;
+        height: 100%;
+        display: none;
+        width: 100%;
+      }
+
+      .btn-wrap {
+        text-align: center;
+        width: 100%;
+      }
+      button {
+        background-color: #ddd;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.5s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .owl-theme .owl-nav .disabled,
+      button.disabled {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="owl-carousel owl-theme">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+    </div>
+    <div class="btn-wrap">
+      <button class="prev-btn">Previous</button>
+      <button class="next-btn">Next</button>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+      $(document).ready(function ($) {
+        $(".owl-carousel").owlCarousel({
+          center: true,
+          items: 3,
+          loop: true,
+          dots: false,
+          margin: 20,
+          nav: true, // Show navigation buttons
+          responsive: {
+            0: {
+              items: 1, // Number of cards shown in the carousel for smaller screens
+            },
+            768: {
+              items: 2, // Number of cards shown in the carousel for medium screens
+            },
+            992: {
+              items: 2, // Number of cards shown in the carousel for large screens
+            },
+          },
+        });
+        var owl = $(".owl-carousel");
+        owl.owlCarousel();
+        $(".next-btn").click(function () {
+          owl.trigger("next.owl.carousel");
+        });
+        $(".prev-btn").click(function () {
+          owl.trigger("prev.owl.carousel");
+        });
+        $(".prev-btn").addClass("disabled");
+        $(owl).on("translated.owl.carousel", function (event) {
+          if ($(".owl-prev").hasClass("disabled")) {
+            $(".prev-btn").addClass("disabled");
+          } else {
+            $(".prev-btn").removeClass("disabled");
+          }
+          if ($(".owl-next").hasClass("disabled")) {
+            $(".next-btn").addClass("disabled");
+          } else {
+            $(".next-btn").removeClass("disabled");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
