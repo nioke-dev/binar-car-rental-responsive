@@ -43,6 +43,32 @@ body {
   position: absolute;
   z-index: -1;
 }
+
+@media (max-width: 768px) {
+  .img__wrapper::before {
+    width: 105%;
+    transform: translate(36px, 50px);
+    right: 0;
+  }
+}
+
+/* Untuk Smartphone (lebar maksimum 480px) */
+@media (max-width: 480px) {
+  .img__wrapper::before {
+    width: 100%;
+    transform: translate(12px, 50px);
+    right: 0;
+    height: inherit;
+  }
+}
+@media (max-width: 320px) {
+  .img__wrapper::before {
+    width: 102%;
+    transform: translate(12px, 50px);
+    right: 0;
+    height: inherit;
+  }
+}
 /* End Hero Section */
 
 /* Our Service Section Start */
